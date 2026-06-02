@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Jurnalistik SMAN 45 Jakarta - Millennium Edition</title>
+  <!-- Tailwind CSS CDN untuk styling yang cepat dan responsif -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Google yang memberikan kesan retro-komputer tapi tetap clean -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Kita gabungkan font modern Plus Jakarta Sans untuk bacaan, dan Share Tech Mono untuk aksen retro Windows 2000! */
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #008080; /* Warna hijau toska khas desktop Windows 95/98/2000! Legend banget! */
+    }
+    .retro-mono {
+      font-family: 'Share Tech Mono', monospace;
+    }
+    /* Efek bevel 3D khas tombol dan window Microsoft jadul */
+    .win-border {
+      border: 3px solid;
+      border-color: #ffffff #808080 #808080 #ffffff;
+    }
+    .win-border-inset {
+      border: 3px solid;
+      border-color: #808080 #ffffff #ffffff #808080;
+    }
+    .win-button {
+      border: 2px solid;
+      border-color: #ffffff #404040 #404040 #ffffff;
+      background-color: #c0c0c0;
+    }
+    .win-button:active {
+      border-color: #404040 #ffffff #ffffff #404040;
+    }
+    .win-blue-bar {
+      background: linear-gradient(90deg, #000080, #1084d0);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-gray-900 flex flex-col p-2 md:p-6">
+
+  <!-- ================= CONTAINER UTAMA WINDOWS 2000 ================= -->
+  <div class="max-w-6xl w-full mx-auto bg-[#c0c0c0] win-border shadow-2xl flex flex-col overflow-hidden">
+    
+    <!-- Title Bar Atas ala Windows 2000 -->
+    <div class="win-blue-bar text-white px-3 py-1.5 flex items-center justify-between select-none">
+      <div class="flex items-center gap-2">
+        <!-- Icon buatan sendiri menggunakan SVG berbentuk logo disket/PC jadul -->
+        <svg class="w-5 h-5 fill-current text-yellow-300" viewBox="0 0 24 24">
+          <path d="M19,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H7V10H17V5H19M15,5H9V8H15V5Z" />
+        </svg>
+        <span class="retro-mono font-bold tracking-wider text-sm sm:text-base">JOURNAL_PORTAL_45_V1.0.EXE</span>
+      </div>
+      <!-- Tombol Minimize, Maximize, Close hiasan khas Windows -->
+      <div class="flex items-center gap-1">
+        <button class="win-button text-xs font-bold px-1.5 py-0.5 text-black hover:bg-gray-300">_</button>
+        <button class="win-button text-xs font-bold px-1.5 py-0.5 text-black hover:bg-gray-300">▢</button>
+        <button class="win-button text-xs font-bold px-1.5 py-0.5 text-black hover:bg-red-500 hover:text-white">X</button>
+      </div>
+    </div>
+
+    <!-- Menu Bar File / Edit / View / Help -->
+    <div class="bg-[#c0c0c0] border-b border-gray-400 px-3 py-1 text-xs md:text-sm flex gap-4 text-black font-semibold">
+      <span class="cursor-pointer hover:underline">File</span>
+      <span class="cursor-pointer hover:underline">Edit</span>
+      <span class="cursor-pointer hover:underline">View</span>
+      <span class="cursor-pointer hover:underline">Favorites</span>
+      <span class="cursor-pointer hover:underline">Tools</span>
+      <span class="cursor-pointer hover:underline text-blue-800">User: ARDIAZ_RAMADHAN</span>
+    </div>
+
+    <!-- ================= NAVIGASI & HEADER UTAMA ================= -->
+    <header class="p-4 md:p-6 bg-slate-100 border-b-2 border-gray-400">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <!-- Judul Portal & Slogan -->
+        <div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 tracking-tight flex items-center gap-2">
+            <span class="text-red-600">SMAN 45</span> 
+            <span class="text-slate-800">JOURNAL</span>
+          </h1>
+          <p class="text-sm text-slate-600 mt-1 font-medium">
+            Media Ekspresi, Edukasi, dan Pemikiran Kritis Siswa SMAN 45 Jakarta Utara
+          </p>
+        </div>
+        
+        <!-- Status Indicator / Ideologi Pancasila Pelajar SMAN 45 -->
+        <div class="bg-[#e0e0e0] win-border-inset p-3 rounded max-w-sm">
+          <div class="flex items-center gap-2 text-xs font-bold text-red-700 uppercase tracking-widest mb-1 retro-mono">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+            Haluan Politik Pelajar: PANCASILAIS
+          </div>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            Siswa SMAN 45 memadukan nilai <strong class="text-blue-800">Konservatif Religius</strong> (seperti pembiasaan ibadah pagi) & <strong class="text-teal-700">Progresif Nasionalis</strong> (berdiri menyanyikan Indonesia Raya), membentuk karakter pelajar Pancasila seutuhnya!
+          </p>
+        </div>
+      </div>
+
+      <!-- Kategori Navigasi (Tab Menu) -->
+      <nav class="mt-6 flex flex-wrap gap-2">
+        <button onclick="switchTab('all')" id="tab-all" class="win-button px-4 py-2 text-sm font-bold text-slate-800 hover:bg-gray-300 flex items-center gap-1.5 border-b-4 border-b-blue-600">
+          📰 Semua Berita
+        </button>
+        <button onclick="switchTab('biografi')" id="tab-biografi" class="win-button px-4 py-2 text-sm font-bold text-slate-800 hover:bg-gray-300 flex items-center gap-1.5">
+          👤 Tokoh Bangsa
+        </button>
+        <button onclick="switchTab('jurnalistik')" id="tab-jurnalistik" class="win-button px-4 py-2 text-sm font-bold text-slate-800 hover:bg-gray-300 flex items-center gap-1.5">
+          ✍️ Jurnalistik
+        </button>
+        <button onclick="switchTab('desain')" id="tab-desain" class="win-button px-4 py-2 text-sm font-bold text-slate-800 hover:bg-gray-300 flex items-center gap-1.5">
+          🎨 Desain Grafis
+        </button>
+        <button onclick="switchTab('prestasi')" id="tab-prestasi" class="win-button px-4 py-2 text-sm font-bold text-slate-800 hover:bg-gray-300 flex items-center gap-1.5">
+          🏆 Prestasi 45
+        </button>
+      </nav>
+    </header>
+
+    <!-- ================= HALAMAN KONTEN UTAMA ================= -->
+    <main class="p-4 md:p-6 bg-[#dcdcdc] flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- SISI KIRI & TENGAH: BERITA UTAMA / HERO (2 Kolom) -->
+      <div class="lg:col-span-2 flex flex-col gap-6">
+        
+        <!-- HERO SECTION: BERITA ANTI-EKSTREMISME & RADIKALISME -->
+        <section class="bg-white win-border p-4 md:p-6 shadow-md">
+          <div class="flex items-center justify-between mb-3">
+            <span class="bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-sm uppercase tracking-wider retro-mono">
+              Laporan Utama & Edukasi
+            </span>
+            <span class="text-xs text-gray-500 font-semibold retro-mono">26 Mei 2026 / 16:35 WIB</span>
+          </div>
+
+          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight hover:text-blue-900 transition-colors cursor-pointer">
+            Awas Provokasi! Cerdas Bermedsos: Menangkal Benih Terorisme, Radikalisme, & Ekstremisme di Kalangan Pelajar
+          </h2>
+
+          <div class="my-4 win-border-inset p-2 bg-[#ececec] relative overflow-hidden rounded">
+            <!-- Representasi grafis atau gambar bertema keamanan medsos -->
+            <div class="h-48 md:h-64 bg-slate-800 text-white flex flex-col justify-center items-center p-4 text-center rounded relative">
+              <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+              <!-- Ikon Perisai & Dunia Digital -->
+              <svg class="w-16 h-16 text-yellow-400 mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+              <p class="text-lg font-bold uppercase tracking-wider text-red-400 retro-mono">Saring Sebelum Sharing!</p>
+              <p class="text-xs max-w-md mt-1 text-slate-300">
+                Media sosial adalah senjata bermata dua. Jangan biarkan algoritma meracuni pikiran kita dengan narasi pemecah belah bangsa.
+              </p>
+            </div>
+          </div>
+
+          <p class="text-slate-700 leading-relaxed text-sm md:text-base">
+            Ardiaz, dunia digital hari ini dipenuhi oleh berbagai informasi instan. Kelompok ekstremis dan radikalis seringkali memanfaatkan kelengahan remaja dengan menyebarkan konten yang terlihat religius atau heroic, padahal mengandung pesan pemecah belah keutuhan NKRI. Sebagai jurnalis muda SMAN 45, tugas kita adalah menjadi benteng informasi yang menyuarakan kebenaran dan cinta tanah air.
+          </p>
+
+          <!-- Struktur edukatif anti-radikalisme -->
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-red-50 p-3 rounded border-l-4 border-red-600 text-xs">
+              <h4 class="font-bold text-red-900 mb-1">Ciri Konten Radikal/Ekstremis:</h4>
+              <ul class="list-disc list-inside space-y-1 text-slate-700">
+                <li>Mengajarkan kebencian pada kelompok yang berbeda.</li>
+                <li>Menghasut untuk menolak dasar negara Pancasila.</li>
+                <li>Mengklaim kebenaran mutlak secara sepihak dan menyalahkan orang lain.</li>
+              </ul>
+            </div>
+            <div class="bg-green-50 p-3 rounded border-l-4 border-green-600 text-xs">
+              <h4 class="font-bold text-green-900 mb-1">Aksi Nyata Pelajar 45:</h4>
+              <ul class="list-disc list-inside space-y-1 text-slate-700">
+                <li>Laporkan/report akun penyebar kebencian.</li>
+                <li>Buat konten tandingan yang damai dan kreatif.</li>
+                <li>Aktif berdiskusi sehat dengan guru agama dan PKn.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- KARTU KONTEN BERDASARKAN KATEGORI (Dinonaktifkan filter secara default, berganti lewat tab) -->
+        <div id="category-section" class="space-y-6">
+          
+          <!-- KATEGORI: BIOGRAFI TOKOH -->
+          <div class="cat-item bg-white win-border p-4 shadow-md" data-category="biografi">
+            <span class="bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded retro-mono">BIOGRAFI TOKOH</span>
+            <h3 class="text-xl font-bold text-slate-900 mt-2">Ki Hajar Dewantara: Jurnalis Pejuang & Bapak Pendidikan Indonesia</h3>
+            <p class="text-sm text-slate-600 mt-2">
+              Sebelum dikenal sebagai tokoh pendidikan, beliau adalah jurnalis kritis yang sangat berani mengkritik pemerintah kolonial Belanda lewat tulisan legendarisnya <em>"Als ik eens Nederlander was"</em> (Seandainya Aku Seorang Belanda). Bukti nyata bahwa pena bisa lebih tajam dari peluru!
+            </p>
+            <div class="mt-3 text-xs font-bold text-blue-800 cursor-pointer hover:underline">Baca Selengkapnya &rarr;</div>
+          </div>
+
+          <!-- KATEGORI: JURNALISTIK -->
+          <div class="cat-item bg-white win-border p-4 shadow-md" data-category="jurnalistik">
+            <span class="bg-emerald-600 text-white text-xs font-bold px-2 py-0.5 rounded retro-mono">JURNALISTIK</span>
+            <h3 class="text-xl font-bold text-slate-900 mt-2">Dasar Jurnalistik Sekolah: Formula 5W + 1H untuk Menulis Berita Menarik</h3>
+            <p class="text-sm text-slate-600 mt-2">
+              Bagi pemula, menulis berita itu tidak sulit! Kuncinya adalah mengumpulkan fakta berdasarkan: What (Apa), Who (Siapa), Where (Di mana), When (Kapan), Why (Kenapa), dan How (Bagaimana). Yuk, mulai liput kegiatan ekskul di SMAN 45!
+            </p>
+            <div class="mt-3 text-xs font-bold text-emerald-800 cursor-pointer hover:underline">Baca Selengkapnya &rarr;</div>
+          </div>
+
+          <!-- KATEGORI: DESAIN GRAFIS -->
+          <div class="cat-item bg-white win-border p-4 shadow-md" data-category="desain">
+            <span class="bg-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded retro-mono">DESAIN GRAFIS</span>
+            <h3 class="text-xl font-bold text-slate-900 mt-2">Psikologi Warna dalam Desain Media Informasi Sekolah</h3>
+            <p class="text-sm text-slate-600 mt-2">
+              Warna biru memberikan kesan terpercaya, merah memicu urgensi, dan hijau menggambarkan kedamaian. Memilih palet warna yang tepat akan membuat majalah dinding (mading) digital SMAN 45 lebih nyaman dan menarik untuk dibaca teman-teman kelas!
+            </p>
+            <div class="mt-3 text-xs font-bold text-purple-800 cursor-pointer hover:underline">Baca Selengkapnya &rarr;</div>
+          </div>
+
+          <!-- KATEGORI: PRESTASI SMAN 45 -->
+          <div class="cat-item bg-white win-border p-4 shadow-md" data-category="prestasi">
+            <span class="bg-amber-600 text-white text-xs font-bold px-2 py-0.5 rounded retro-mono">PRESTASI SMAN 45</span>
+            <h3 class="text-xl font-bold text-slate-900 mt-2">Sabet Juara! SMAN 45 Jakarta Utara Raih Medali dalam Kompetisi Akademik & Olahraga</h3>
+            <p class="text-sm text-slate-600 mt-2">
+              Sekolah kita tercinta tidak henti-hentinya mengukir prestasi gemilang di tingkat kota maupun provinsi. Mulai dari kejuaraan Paskibra, PMR, hingga karya ilmiah remaja. Ini adalah bahan liputan terbaik untuk menginspirasi siswa lainnya!
+            </p>
+            <div class="mt-3 text-xs font-bold text-amber-800 cursor-pointer hover:underline">Lihat Galeri Prestasi &rarr;</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- SISI KANAN: POJOK REDAKSI, KONSENSUS POLITIK, & PESAN (1 Kolom) -->
+      <div class="flex flex-col gap-6">
+
+        <!-- KONSENSUS NILAI PANCASILA SMAN 45 -->
+        <section class="bg-slate-100 win-border p-4 shadow-md">
+          <div class="win-blue-bar text-white text-xs font-bold px-2 py-1 flex items-center gap-1 mb-3 retro-mono">
+            <span>🛡️ INTEGRITAS_45.TXT</span>
+          </div>
+          <h3 class="font-bold text-base text-slate-800 mb-2">Nilai Karakter Kebangsaan</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            SMAN 45 Jakarta Utara memadukan dua pendekatan luhur yang memperkuat jiwa Pancasila:
+          </p>
+          <div class="space-y-3">
+            <div class="p-2.5 bg-white border border-gray-300 rounded">
+              <span class="text-xs font-bold text-amber-800 flex items-center gap-1">
+                🌅 Sisi Religius (Konservatif Positif)
+              </span>
+              <p class="text-[11px] text-slate-600 mt-1">
+                Melalui kegiatan ibadah pagi bersama sesuai agama masing-masing, menciptakan generasi yang beriman dan bertakwa sebelum memulai kegiatan belajar.
+              </p>
+            </div>
+            <div class="p-2.5 bg-white border border-gray-300 rounded">
+              <span class="text-xs font-bold text-blue-800 flex items-center gap-1">
+                🇮🇩 Sisi Nasionalis & Progresif
+              </span>
+              <p class="text-[11px] text-slate-600 mt-1">
+                Siswa berdiri tegak menyanyikan lagu kebangsaan Indonesia Raya setiap pagi, memupuk kecintaan mendalam pada tanah air sejak dini.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- POJOK REDAKSI / CALL TO ACTION -->
+        <section class="bg-[#c0c0c0] win-border p-4 shadow-md">
+          <div class="win-blue-bar text-white text-xs font-bold px-2 py-1 flex items-center gap-1 mb-3 retro-mono">
+            <span>✉️ POJOK_REDAKSI.EXE</span>
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 mb-1">Hubungi Redaksi Jurnalistik</h3>
+          <p class="text-xs text-slate-700 mb-4">
+            Beri kritikan tajam membangun atau dukungan hangatmu agar mading digital SMAN 45 semakin maju!
+          </p>
+
+          <!-- Form Kritik dan Dukungan -->
+          <form id="redaksiForm" onsubmit="handleFormSubmit(event)" class="space-y-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1 retro-mono">NAMA LENGKAP / KELAS:</label>
+              <input type="text" id="formNama" required placeholder="Contoh: Muhamad Ardiaz Ramadhan (X-B)" 
+                class="w-full text-xs p-2 bg-white border border-gray-500 rounded focus:outline-none focus:ring-1 focus:ring-blue-600">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1 retro-mono">JENIS PESAN:</label>
+              <div class="flex gap-4">
+                <label class="inline-flex items-center text-xs text-slate-800 font-bold cursor-pointer">
+                  <input type="radio" name="jenisPesan" value="Kritikan" checked class="mr-1">
+                  🚫 Kritikan
+                </label>
+                <label class="inline-flex items-center text-xs text-slate-800 font-bold cursor-pointer">
+                  <input type="radio" name="jenisPesan" value="Dukungan" class="mr-1">
+                  💖 Dukungan
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1 retro-mono">ISI PESAN:</label>
+              <textarea id="formPesan" required rows="3" placeholder="Tuliskan kritikan konstruktif atau dukunganmu di sini..." 
+                class="w-full text-xs p-2 bg-white border border-gray-500 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"></textarea>
+            </div>
+
+            <button type="submit" class="w-full win-button py-2 text-xs font-bold text-slate-800 hover:bg-slate-300">
+              KIRIM PESAN SEKARANG
+            </button>
+          </form>
+
+          <!-- Box Notifikasi Pengiriman (Akan muncul jika dikirim) -->
+          <div id="notifBox" class="hidden mt-3 p-2 bg-green-100 border border-green-600 text-xs text-green-900 rounded">
+            <strong>Sistem Redaksi:</strong> Terima kasih, pesan Anda berhasil terkirim ke Redaksi Jurnalistik SMAN 45!
+          </div>
+        </section>
+
+        <!-- TIPS MENTORING UNTUK ARDIAZ -->
+        <section class="bg-amber-50 win-border p-4 shadow-md border-l-4 border-amber-500">
+          <div class="flex items-center gap-1.5 mb-2 text-xs font-bold text-amber-900 uppercase retro-mono">
+            <span>💡 Catatan Mentor</span>
+          </div>
+          <p class="text-xs text-amber-900 leading-relaxed font-medium">
+            "Ardiaz, setiap berita yang kamu tulis adalah cerminan dari tanggung jawab sosialmu sebagai jurnalis sekolah. Gunakan pena digitalmu untuk menyebarkan perdamaian, mengedukasi kawan-kawan tentang bahaya hoaks, serta memicu semangat belajar. Kamu punya potensi besar!"
+          </p>
+        </section>
+
+      </div>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-slate-800 text-slate-300 p-4 border-t border-slate-700 text-center text-xs flex flex-col md:flex-row justify-between items-center gap-2">
+      <div>
+        &copy; 2026 Portal Jurnalistik SMAN 45 Jakarta. Dikembangkan oleh <span class="text-yellow-400 font-bold">Muhamad Ardiaz Ramadhan</span>.
+      </div>
+      <div class="retro-mono text-slate-400">
+        Engine: HTML / Tailwind CSS / JS Millennium-v1.0
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // FUNGSI UNTUK MENGGANTI TAB KATEGORI KONTEN
+    function switchTab(category) {
+      const items = document.querySelectorAll('.cat-item');
+      const tabs = ['all', 'biografi', 'jurnalistik', 'desain', 'prestasi'];
+      
+      // Update tampilan tab mana yang aktif (kita beri border bawah biru)
+      tabs.forEach(tabName => {
+        const tabElement = document.getElementById('tab-' + tabName);
+        if (tabName === category) {
+          tabElement.classList.add('border-b-4', 'border-b-blue-600', 'bg-gray-300');
+        } else {
+          tabElement.classList.remove('border-b-4', 'border-b-blue-600', 'bg-gray-300');
+        }
+      });
+
+      // Filter konten kartu berdasarkan kategori yang dipilih
+      items.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (category === 'all') {
+          item.classList.remove('hidden');
+        } else if (itemCategory === category) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+
+    // FUNGSI UNTUK MENANGANI PENGIRIMAN FORM REDAKSI
+    function handleFormSubmit(event) {
+      event.preventDefault(); // Mencegah halaman reload saat form dikirim
+      
+      const nama = document.getElementById('formNama').value;
+      const jenis = document.querySelector('input[name="jenisPesan"]:checked').value;
+      const pesan = document.getElementById('formPesan').value;
+      
+      // Menampilkan notifikasi sukses yang ramah siswa
+      const notifBox = document.getElementById('notifBox');
+      notifBox.innerHTML = `<strong>Sistem Redaksi:</strong> Halo ${nama}, ${jenis} Anda telah kami terima! Mading SMAN 45 akan terus berkembang berkat kontribusimu. Tetap kritis!`;
+      notifBox.classList.remove('hidden');
+
+      // Mereset isi form
+      document.getElementById('redaksiForm').reset();
+
+      // Menghilangkan notifikasi secara otomatis setelah 6 detik
+      setTimeout(() => {
+        notifBox.classList.add('hidden');
+      }, 6000);
+    }
+  </script>
+</body>
+</html>
